@@ -10,9 +10,6 @@ You need to enable sound to play the video.
        loop 
        muted></video>
 
-<p align="center">
-  <img width="800" src="docs/preview.webp">
-</p>
 ---
 
 ## 🌟 Features
@@ -46,6 +43,10 @@ https://raw.githubusercontent.com/brunocalado/daggerheart-risk-it-all/main/modul
     ```
 2.  **Select Player:** Run the macro and select the player who is risking it all from the dialog list.
 3.  **The Moment:** The selected player will receive the "Risk It All" screen. Once they click **ROLL**, the sequence begins for everyone.
+
+<p align="center">
+  <img width="800" src="docs/preview.webp">
+</p>
 
 ---
 
