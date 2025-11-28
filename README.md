@@ -2,7 +2,7 @@
 
 **Daggerheart: Risk It All** is a Foundry VTT module designed to elevate the tension and immersion of one of the most critical moments in the game. When a player decides to "Risk It All," instead of a simple dice roll in the chat, this module triggers a cinematic audiovisual experience for all connected players.
 
-<video src="https://raw.githubusercontent.com/brunocalado/daggerheart-risk-it-all/main/docs/demo.mp4" 
+<video src="https://github.com/user-attachments/assets/3f1f79d0-9bf5-4ede-a179-1b7cc459c9dd" 
        controls 
        width="720"
        autoplay 
