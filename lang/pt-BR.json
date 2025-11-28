@@ -1,0 +1,69 @@
+{
+  "RISK_IT_ALL": {
+    "Title": "Daggerheart: Arriscar Tudo",
+    "Settings": {
+      "Background": {
+        "Name": "Imagem: Fundo",
+        "Hint": "Fundo da tela de rolagem."
+      },
+      "Hope": {
+        "Name": "Imagem: Esperança",
+        "Hint": "Resultado: Esperança > Medo."
+      },
+      "Fear": {
+        "Name": "Imagem: Medo",
+        "Hint": "Resultado: Medo > Esperança."
+      },
+      "Critical": {
+        "Name": "Imagem: Crítico",
+        "Hint": "Resultado: Crítico (Empate)."
+      },
+      "RollText": {
+        "Name": "Texto: Subtítulo",
+        "Hint": "Exibido abaixo do botão de rolar.",
+        "Default": "Morte ou Lenda. A escolha é sua!"
+      },
+      "SoundRoll": {
+        "Name": "Som: Solicitação de Rolagem",
+        "Hint": "Toca quando o botão aparece."
+      },
+      "SoundSuspense": {
+        "Name": "Som: Contagem Regressiva",
+        "Hint": "Toca durante a contagem de 6s."
+      },
+      "SoundHope": {
+        "Name": "Som: Esperança",
+        "Hint": "Áudio quando Esperança vence."
+      },
+      "SoundFear": {
+        "Name": "Som: Medo",
+        "Hint": "Áudio quando Medo vence."
+      },
+      "SoundCritical": {
+        "Name": "Som: Crítico",
+        "Hint": "Áudio para resultado Crítico."
+      }
+    },
+    "Notifications": {
+      "GMOnly": "Apenas o Mestre pode ativar o Arriscar Tudo.",
+      "NoPlayers": "Nenhum jogador conectado.",
+      "Sent": "Arriscar Tudo enviado para o jogador."
+    },
+    "Dialog": {
+      "SelectPlayer": "Selecione o Jogador:",
+      "TriggerButton": "Ativar Risco"
+    },
+    "UI": {
+      "Close": "Fechar",
+      "Roll": "ROLAR"
+    },
+    "Chat": {
+      "Title": "Resultado do Risco",
+      "HopeLabel": "Esperança",
+      "FearLabel": "Medo",
+      "ResultHope": "Você se levanta, limpando Pontos de Vida e/ou Estresse igual ao valor do Dado de Esperança.",
+      "ResultFear": "Você morreu!",
+      "ResultCritical": "Você se levanta e limpa todos os Pontos de Vida e Estresse."
+    }
+  }
+}

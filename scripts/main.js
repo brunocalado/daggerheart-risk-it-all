@@ -1,6 +1,6 @@
 /**
- * Daggerheart Risk It All - v3.15
- * Features: 6s Countdown, Close Button, Audio Debounce Fix, Purple Theme Logic.
+ * Daggerheart Risk It All - v3.16
+ * Features: 6s Countdown, Close Button, Audio Debounce Fix, I18n Support.
  */
 
 const MODULE_ID = 'daggerheart-risk-it-all';
@@ -26,28 +26,28 @@ class RiskItAll {
         const imagePicker = { type: String, scope: 'world', config: true, filePicker: 'image' };
         const audioPicker = { type: String, scope: 'world', config: true, filePicker: 'audio' };
 
-        game.settings.register(MODULE_ID, 'backgroundPath', { name: "Image: Background", hint: "Roll screen background.", ...imagePicker, default: `modules/${MODULE_ID}/assets/images/roll-screen.webp` });
-        game.settings.register(MODULE_ID, 'hopePath', { name: "Image: Hope", hint: "Result: Hope > Fear.", ...imagePicker, default: `modules/${MODULE_ID}/assets/images/hope.webp` });
-        game.settings.register(MODULE_ID, 'fearPath', { name: "Image: Fear", hint: "Result: Fear > Hope.", ...imagePicker, default: `modules/${MODULE_ID}/assets/images/fear.webp` });
-        game.settings.register(MODULE_ID, 'criticalPath', { name: "Image: Critical", hint: "Result: Critical (Tie).", ...imagePicker, default: `modules/${MODULE_ID}/assets/images/critical.webp` });
+        game.settings.register(MODULE_ID, 'backgroundPath', { name: "RISK_IT_ALL.Settings.Background.Name", hint: "RISK_IT_ALL.Settings.Background.Hint", ...imagePicker, default: `modules/${MODULE_ID}/assets/images/roll-screen.webp` });
+        game.settings.register(MODULE_ID, 'hopePath', { name: "RISK_IT_ALL.Settings.Hope.Name", hint: "RISK_IT_ALL.Settings.Hope.Hint", ...imagePicker, default: `modules/${MODULE_ID}/assets/images/hope.webp` });
+        game.settings.register(MODULE_ID, 'fearPath', { name: "RISK_IT_ALL.Settings.Fear.Name", hint: "RISK_IT_ALL.Settings.Fear.Hint", ...imagePicker, default: `modules/${MODULE_ID}/assets/images/fear.webp` });
+        game.settings.register(MODULE_ID, 'criticalPath', { name: "RISK_IT_ALL.Settings.Critical.Name", hint: "RISK_IT_ALL.Settings.Critical.Hint", ...imagePicker, default: `modules/${MODULE_ID}/assets/images/critical.webp` });
 
-        game.settings.register(MODULE_ID, 'rollText', { name: "Text: Subtitle", hint: "Displayed below the roll button.", type: String, scope: 'world', config: true, default: "Death or Legend. Your choice!" });
+        game.settings.register(MODULE_ID, 'rollText', { name: "RISK_IT_ALL.Settings.RollText.Name", hint: "RISK_IT_ALL.Settings.RollText.Hint", type: String, scope: 'world', config: true, default: game.i18n.localize("RISK_IT_ALL.Settings.RollText.Default") });
 
-        game.settings.register(MODULE_ID, 'soundRoll', { name: "Sound: Roll Request", hint: "Played when roll button appears.", ...audioPicker, default: `modules/${MODULE_ID}/assets/audio/roll-screen.mp3` });
-        game.settings.register(MODULE_ID, 'soundSuspense', { name: "Sound: Countdown", hint: "Played during the 6s countdown.", ...audioPicker, default: `modules/${MODULE_ID}/assets/audio/countdown.mp3` });
-        game.settings.register(MODULE_ID, 'soundHope', { name: "Sound: Hope", hint: "Audio when Hope wins.", ...audioPicker, default: `modules/${MODULE_ID}/assets/audio/hope.mp3` });
-        game.settings.register(MODULE_ID, 'soundFear', { name: "Sound: Fear", hint: "Audio when Fear wins.", ...audioPicker, default: `modules/${MODULE_ID}/assets/audio/fear.mp3` });
-        game.settings.register(MODULE_ID, 'soundCritical', { name: "Sound: Critical", hint: "Audio for Critical result.", ...audioPicker, default: `modules/${MODULE_ID}/assets/audio/critical.mp3` });
+        game.settings.register(MODULE_ID, 'soundRoll', { name: "RISK_IT_ALL.Settings.SoundRoll.Name", hint: "RISK_IT_ALL.Settings.SoundRoll.Hint", ...audioPicker, default: `modules/${MODULE_ID}/assets/audio/roll-screen.mp3` });
+        game.settings.register(MODULE_ID, 'soundSuspense', { name: "RISK_IT_ALL.Settings.SoundSuspense.Name", hint: "RISK_IT_ALL.Settings.SoundSuspense.Hint", ...audioPicker, default: `modules/${MODULE_ID}/assets/audio/countdown.mp3` });
+        game.settings.register(MODULE_ID, 'soundHope', { name: "RISK_IT_ALL.Settings.SoundHope.Name", hint: "RISK_IT_ALL.Settings.SoundHope.Hint", ...audioPicker, default: `modules/${MODULE_ID}/assets/audio/hope.mp3` });
+        game.settings.register(MODULE_ID, 'soundFear', { name: "RISK_IT_ALL.Settings.SoundFear.Name", hint: "RISK_IT_ALL.Settings.SoundFear.Hint", ...audioPicker, default: `modules/${MODULE_ID}/assets/audio/fear.mp3` });
+        game.settings.register(MODULE_ID, 'soundCritical', { name: "RISK_IT_ALL.Settings.SoundCritical.Name", hint: "RISK_IT_ALL.Settings.SoundCritical.Hint", ...audioPicker, default: `modules/${MODULE_ID}/assets/audio/critical.mp3` });
     }
 
     static async gmTriggerFlow() {
-        if (!game.user.isGM) return ui.notifications.warn("Only the GM can trigger Risk it All.");
+        if (!game.user.isGM) return ui.notifications.warn(game.i18n.localize("RISK_IT_ALL.Notifications.GMOnly"));
         const users = game.users.filter(u => u.active && !u.isGM);
-        if (users.length === 0) return ui.notifications.warn("No players connected.");
+        if (users.length === 0) return ui.notifications.warn(game.i18n.localize("RISK_IT_ALL.Notifications.NoPlayers"));
 
         const content = `
             <div class="form-group">
-                <label>Select Player:</label>
+                <label>${game.i18n.localize("RISK_IT_ALL.Dialog.SelectPlayer")}</label>
                 <select id="risk-player-select" style="width: 100%">
                     ${users.map(u => `<option value="${u.id}">${u.name}</option>`).join('')}
                 </select>
@@ -55,11 +55,11 @@ class RiskItAll {
         `;
 
         new Dialog({
-            title: "Daggerheart: Risk It All", content: content, buttons: {
-                trigger: { label: "Trigger Risk", icon: `<i class="fas fa-skull"></i>`, callback: (html) => {
+            title: game.i18n.localize("RISK_IT_ALL.Title"), content: content, buttons: {
+                trigger: { label: game.i18n.localize("RISK_IT_ALL.Dialog.TriggerButton"), icon: `<i class="fas fa-skull"></i>`, callback: (html) => {
                     const userId = html.find('#risk-player-select').val();
                     game.socket.emit(SOCKET_NAME, { type: 'SHOW_UI', targetUserId: userId });
-                    ui.notifications.info(`Risk It All sent to player.`);
+                    ui.notifications.info(game.i18n.localize("RISK_IT_ALL.Notifications.Sent"));
                 }}
             }
         }).render(true);
@@ -81,10 +81,10 @@ class RiskItAll {
         if (bgPath) overlay.style.backgroundImage = `url('${bgPath}')`;
 
         overlay.innerHTML = `
-            <button class="roll-close-btn" id="risk-cancel-btn"><i class="fas fa-times"></i> Close</button>
+            <button class="roll-close-btn" id="risk-cancel-btn"><i class="fas fa-times"></i> ${game.i18n.localize("RISK_IT_ALL.UI.Close")}</button>
             <div class="risk-content-wrapper">
                 <h1 class="risk-title">RISK IT ALL</h1>
-                <button class="risk-btn">ROLL</button>
+                <button class="risk-btn">${game.i18n.localize("RISK_IT_ALL.UI.Roll")}</button>
                 <div class="risk-subtitle">${rollText}</div>
             </div>
         `;
@@ -143,13 +143,13 @@ class RiskItAll {
 
         if (hopeVal > fearVal) {
             resultKey = 'hopePath';
-            messageText = "You stand, clearing Hit Points and/or Stress equal to the Hope Die value.";
+            messageText = game.i18n.localize("RISK_IT_ALL.Chat.ResultHope");
         } else if (fearVal > hopeVal) {
             resultKey = 'fearPath';
-            messageText = "You died!";
+            messageText = game.i18n.localize("RISK_IT_ALL.Chat.ResultFear");
         } else {
             resultKey = 'criticalPath';
-            messageText = "You stand and clear all Hit Points and Stress.";
+            messageText = game.i18n.localize("RISK_IT_ALL.Chat.ResultCritical");
         }
 
         game.socket.emit(SOCKET_NAME, { type: 'PLAY_MEDIA', mediaKey: resultKey });
@@ -160,8 +160,8 @@ class RiskItAll {
             content: `
                 <div style="text-align: center; font-size: 1.1em; color: #f0f0f0;">
                     <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 8px; font-weight: bold;">
-                        <span style="color: #FFD700; text-shadow: 1px 1px 2px black;">Hope: ${hopeVal}</span>
-                        <span style="color: #da70d6; text-shadow: 1px 1px 2px black;">Fear: ${fearVal}</span>
+                        <span style="color: #FFD700; text-shadow: 1px 1px 2px black;">${game.i18n.localize("RISK_IT_ALL.Chat.HopeLabel")}: ${hopeVal}</span>
+                        <span style="color: #da70d6; text-shadow: 1px 1px 2px black;">${game.i18n.localize("RISK_IT_ALL.Chat.FearLabel")}: ${fearVal}</span>
                     </div>
                     <div style="border-top: 1px solid #777; padding-top: 5px;">${messageText}</div>
                 </div>
@@ -198,7 +198,7 @@ class RiskItAll {
 
             const closeBtn = document.createElement('button');
             closeBtn.className = 'media-skip-btn';
-            closeBtn.innerHTML = '<i class="fas fa-times"></i> Close';
+            closeBtn.innerHTML = '<i class="fas fa-times"></i> ' + game.i18n.localize("RISK_IT_ALL.UI.Close");
             closeBtn.onclick = (e) => { e.stopPropagation(); finish(); };
             container.appendChild(closeBtn);
 

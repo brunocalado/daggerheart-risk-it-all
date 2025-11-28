@@ -1,10 +1,10 @@
 {
   "id": "daggerheart-risk-it-all",
   "title": "Daggerheart: Risk It All",
-  "version": "3.15.0",
+  "version": "3.16.0",
   "compatibility": {
-    "minimum": "12",
-    "verified": "12"
+    "minimum": "13",
+    "verified": "13"
   },
   "url": "https://github.com/brunocalado/daggerheart-risk-it-all",
   "manifest": "https://raw.githubusercontent.com/brunocalado/daggerheart-risk-it-all/main/module.json",
@@ -24,5 +24,30 @@
   "styles": [
     "styles/style.css"
   ],
-  "socket": true
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    }
+  ],
+  "socket": true,
+  "packs": [
+    {
+      "label": "Risk it All - Macros",
+      "type": "Macro",
+      "name": "risk-it-all-macros",
+      "path": "packs/risk-it-all-macros",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ]  
 }

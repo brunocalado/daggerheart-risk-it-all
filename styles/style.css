@@ -93,7 +93,7 @@
     to { transform: scale(1); opacity: 1; }
 }
 
-/* v3.12/15: Botão Roxo Escuro */
+/* Botão Roxo Escuro */
 .risk-btn {
     appearance: none;
     background: linear-gradient(135deg, #4a0072 0%, #240046 100%);
@@ -134,7 +134,6 @@
     font-size: 5rem;
 }
 
-/* v3.15: Sombra do Título Roxa Neon (#aa00ff) */
 .risk-title {
     color: white;
     font-size: 4rem;

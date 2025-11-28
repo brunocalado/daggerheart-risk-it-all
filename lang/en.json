@@ -1,0 +1,69 @@
+{
+  "RISK_IT_ALL": {
+    "Title": "Daggerheart: Risk It All",
+    "Settings": {
+      "Background": {
+        "Name": "Image: Background",
+        "Hint": "Roll screen background."
+      },
+      "Hope": {
+        "Name": "Image: Hope",
+        "Hint": "Result: Hope > Fear."
+      },
+      "Fear": {
+        "Name": "Image: Fear",
+        "Hint": "Result: Fear > Hope."
+      },
+      "Critical": {
+        "Name": "Image: Critical",
+        "Hint": "Result: Critical (Tie)."
+      },
+      "RollText": {
+        "Name": "Text: Subtitle",
+        "Hint": "Displayed below the roll button.",
+        "Default": "Death or Legend. Your choice!"
+      },
+      "SoundRoll": {
+        "Name": "Sound: Roll Request",
+        "Hint": "Played when roll button appears."
+      },
+      "SoundSuspense": {
+        "Name": "Sound: Countdown",
+        "Hint": "Played during the 6s countdown."
+      },
+      "SoundHope": {
+        "Name": "Sound: Hope",
+        "Hint": "Audio when Hope wins."
+      },
+      "SoundFear": {
+        "Name": "Sound: Fear",
+        "Hint": "Audio when Fear wins."
+      },
+      "SoundCritical": {
+        "Name": "Sound: Critical",
+        "Hint": "Audio for Critical result."
+      }
+    },
+    "Notifications": {
+      "GMOnly": "Only the GM can trigger Risk it All.",
+      "NoPlayers": "No players connected.",
+      "Sent": "Risk It All sent to player."
+    },
+    "Dialog": {
+      "SelectPlayer": "Select Player:",
+      "TriggerButton": "Trigger Risk"
+    },
+    "UI": {
+      "Close": "Close",
+      "Roll": "ROLL"
+    },
+    "Chat": {
+      "Title": "Risk Result",
+      "HopeLabel": "Hope",
+      "FearLabel": "Fear",
+      "ResultHope": "You stand, clearing Hit Points and/or Stress equal to the Hope Die value.",
+      "ResultFear": "You died!",
+      "ResultCritical": "You stand and clear all Hit Points and Stress."
+    }
+  }
+}
