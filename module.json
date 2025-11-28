@@ -1,17 +1,11 @@
 {
   "id": "daggerheart-risk-it-all",
   "title": "Daggerheart: Risk It All",
-  "version": "3.14.0",
+  "version": "3.15.0",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
   },
-  "authors": [
-    {
-      "name": "Mestre Digital",
-      "flags": {}
-    }
-  ],
   "url": "https://github.com/brunocalado/daggerheart-risk-it-all",
   "manifest": "https://raw.githubusercontent.com/brunocalado/daggerheart-risk-it-all/main/module.json",
   "download": "https://codeload.github.com/brunocalado/daggerheart-risk-it-all/zip/main",
